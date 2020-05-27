@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 import statistics
+from tabulate import tabulate
 import datos as data
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -33,14 +34,19 @@ class Ui_Dialog(object):
         self.tituloAnalisisDescriptivo.setFont(font)
         self.tituloAnalisisDescriptivo.setObjectName("tituloAnalisisDescriptivo")
         self.comboBoxAnalisisDescriptivo = QtWidgets.QComboBox(Dialog)
-        self.comboBoxAnalisisDescriptivo.setGeometry(QtCore.QRect(170, 120, 69, 22))
+        self.comboBoxAnalisisDescriptivo.setGeometry(QtCore.QRect(170, 120, 171, 22))
         self.comboBoxAnalisisDescriptivo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.comboBoxAnalisisDescriptivo.setEditable(False)
         self.comboBoxAnalisisDescriptivo.setMinimumContentsLength(1)
         self.comboBoxAnalisisDescriptivo.setObjectName("comboBoxAnalisisDescriptivo")
-        self.comboBoxAnalisisDescriptivo.addItem("")
+        self.comboBoxAnalisisDescriptivo.addItem("Edad")
+        self.comboBoxAnalisisDescriptivo.addItem("Sector")
+        self.comboBoxAnalisisDescriptivo.addItem("Entidad Ubicacion Unidad Medica")
+        self.comboBoxAnalisisDescriptivo.addItem("Entidad Nacimiento Paciente")
+        self.comboBoxAnalisisDescriptivo.addItem("Entidad Residencia Paciente")
+        self.comboBoxAnalisisDescriptivo.addItem("Municipio Residencia Paciente")
         self.botonAnalisisDescriptivo = QtWidgets.QPushButton(Dialog)
-        self.botonAnalisisDescriptivo.setGeometry(QtCore.QRect(250, 120, 161, 23))
+        self.botonAnalisisDescriptivo.setGeometry(QtCore.QRect(350, 120, 161, 23))
         self.botonAnalisisDescriptivo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.botonAnalisisDescriptivo.setDefault(False)
         self.botonAnalisisDescriptivo.setObjectName("botonAnalisisDescriptivo")
@@ -138,6 +144,9 @@ class Ui_Dialog(object):
         self.botonAnalisisCorrelacion.setObjectName("botonAnalisisCorrelacion")
         self.output = QtWidgets.QLabel(Dialog)
         self.output.setGeometry(QtCore.QRect(20, 340, 891, 281))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.output.setFont(font)
         self.output.setAlignment(QtCore.Qt.AlignCenter)
         self.output.setObjectName("output")
 
@@ -181,17 +190,268 @@ class Ui_Dialog(object):
         
         # EDAD
         if variable == "Edad":
-            # Promedio
-            average = statistics.mean(data.lista_edad)
-            print(average)
-            # Imprimir Analisis Descriptivo
-            self.output.setText("Promedio " + str(average))
+            # Media
+            media = statistics.mean(data.lista_edad)
+            # print(media)
+            # Mediana
+            mediana = statistics.median(data.lista_edad)
+            # print(mediana)
+            # Moda
+            moda = statistics.mode(data.lista_edad)
+            # print(moda)
+            # Desv. Estándar
+            devEstandar = statistics.stdev(data.lista_edad)
+            # print(devEstandar)
+            # Varianza
+            varianza = statistics.variance(data.lista_edad)
+            # print(varianza)            
+            # Mínimo
+            minimo = min(data.lista_edad)
+            # print(minimo)
+            # Máximo
+            maximo = max(data.lista_edad)
+            # print(maximo)
+            # Rango
+            rango = maximo - minimo
+            # print(rango)
+            # Suma
+            suma = 0
+            for i in data.lista_edad:
+                suma += i
+            # print(suma)
+            # No. de datos
+            noDatos = len(data.lista_edad)
+            # print(noDatos)
 
-        # VARIABLE SECTOR
-        # VARIABLE ENTIDAD_UM
-        # VARIABLE ENTIDAD_NAC
-        # VARIABLE ENTIDAD_RES
-        # VARIABLE MUNICIPIO_RES
+
+            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["ANALISIS DESCRIPTIVO"]
+            
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+
+            # Imprimir Analisis Descriptivo
+            self.output.setText(final)
+
+        # SECTOR
+        elif variable == "Sector":
+            # Media
+            media = statistics.mean(data.lista_sector)
+            # print(media)
+            # Mediana
+            mediana = statistics.median(data.lista_sector)
+            # print(mediana)
+            # Moda
+            moda = statistics.mode(data.lista_sector)
+            # print(moda)
+            # Desv. Estándar
+            devEstandar = statistics.stdev(data.lista_sector)
+            # print(devEstandar)
+            # Varianza
+            varianza = statistics.variance(data.lista_sector)
+            # print(varianza)            
+            # Mínimo
+            minimo = min(data.lista_sector)
+            # print(minimo)
+            # Máximo
+            maximo = max(data.lista_sector)
+            # print(maximo)
+            # Rango
+            rango = maximo - minimo
+            # print(rango)
+            # Suma
+            suma = 0
+            for i in data.lista_sector:
+                suma += i
+            # print(suma)
+            # No. de datos
+            noDatos = len(data.lista_sector)
+            # print(noDatos)
+
+
+            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["ANALISIS DESCRIPTIVO"]
+            
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+
+            # Imprimir Analisis Descriptivo
+            self.output.setText(final)
+
+        # ENTIDAD UBICACION UNIDAD MEDICA
+        elif variable == "Entidad Ubicacion Unidad Medica":
+            # Media
+            media = statistics.mean(data.lista_entidadUM)
+            # print(media)
+            # Mediana
+            mediana = statistics.median(data.lista_entidadUM)
+            # print(mediana)
+            # Moda
+            moda = statistics.mode(data.lista_entidadUM)
+            # print(moda)
+            # Desv. Estándar
+            devEstandar = statistics.stdev(data.lista_entidadUM)
+            # print(devEstandar)
+            # Varianza
+            varianza = statistics.variance(data.lista_entidadUM)
+            # print(varianza)            
+            # Mínimo
+            minimo = min(data.lista_entidadUM)
+            # print(minimo)
+            # Máximo
+            maximo = max(data.lista_entidadUM)
+            # print(maximo)
+            # Rango
+            rango = maximo - minimo
+            # print(rango)
+            # Suma
+            suma = 0
+            for i in data.lista_entidadUM:
+                suma += i
+            # print(suma)
+            # No. de datos
+            noDatos = len(data.lista_entidadUM)
+            # print(noDatos)
+
+
+            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["ANALISIS DESCRIPTIVO"]
+            
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+
+            # Imprimir Analisis Descriptivo
+            self.output.setText(final)
+
+        # ENTIDAD NACIMIENTO PACIENTE
+        elif variable == "Entidad Nacimiento Paciente":
+            # Media
+            media = statistics.mean(data.lista_entidadNAC)
+            # print(media)
+            # Mediana
+            mediana = statistics.median(data.lista_entidadNAC)
+            # print(mediana)
+            # Moda
+            moda = statistics.mode(data.lista_entidadNAC)
+            # print(moda)
+            # Desv. Estándar
+            devEstandar = statistics.stdev(data.lista_entidadNAC)
+            # print(devEstandar)
+            # Varianza
+            varianza = statistics.variance(data.lista_entidadNAC)
+            # print(varianza)            
+            # Mínimo
+            minimo = min(data.lista_entidadNAC)
+            # print(minimo)
+            # Máximo
+            maximo = max(data.lista_entidadNAC)
+            # print(maximo)
+            # Rango
+            rango = maximo - minimo
+            # print(rango)
+            # Suma
+            suma = 0
+            for i in data.lista_entidadNAC:
+                suma += i
+            # print(suma)
+            # No. de datos
+            noDatos = len(data.lista_entidadNAC)
+            # print(noDatos)
+
+
+            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["ANALISIS DESCRIPTIVO"]
+            
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+
+            # Imprimir Analisis Descriptivo
+            self.output.setText(final)
+
+        # ENTIDAD RESIDENCIA PACIENTE
+        elif variable == "Entidad Residencia Paciente":
+            # Media
+            media = statistics.mean(data.lista_entidadRES)
+            # print(media)
+            # Mediana
+            mediana = statistics.median(data.lista_entidadRES)
+            # print(mediana)
+            # Moda
+            moda = statistics.mode(data.lista_entidadRES)
+            # print(moda)
+            # Desv. Estándar
+            devEstandar = statistics.stdev(data.lista_entidadRES)
+            # print(devEstandar)
+            # Varianza
+            varianza = statistics.variance(data.lista_entidadRES)
+            # print(varianza)            
+            # Mínimo
+            minimo = min(data.lista_entidadRES)
+            # print(minimo)
+            # Máximo
+            maximo = max(data.lista_entidadRES)
+            # print(maximo)
+            # Rango
+            rango = maximo - minimo
+            # print(rango)
+            # Suma
+            suma = 0
+            for i in data.lista_entidadRES:
+                suma += i
+            # print(suma)
+            # No. de datos
+            noDatos = len(data.lista_entidadRES)
+            # print(noDatos)
+
+
+            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["ANALISIS DESCRIPTIVO"]
+            
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+
+            # Imprimir Analisis Descriptivo
+            self.output.setText(final)
+
+        # MUNICIPIO RESIDENCIA PACIENTE
+        elif variable == "Municipio Residencia Paciente":
+            # Media
+            media = statistics.mean(data.lista_municipioRES)
+            # print(media)
+            # Mediana
+            mediana = statistics.median(data.lista_municipioRES)
+            # print(mediana)
+            # Moda
+            moda = statistics.mode(data.lista_municipioRES)
+            # print(moda)
+            # Desv. Estándar
+            devEstandar = statistics.stdev(data.lista_municipioRES)
+            # print(devEstandar)
+            # Varianza
+            varianza = statistics.variance(data.lista_municipioRES)
+            # print(varianza)            
+            # Mínimo
+            minimo = min(data.lista_municipioRES)
+            # print(minimo)
+            # Máximo
+            maximo = max(data.lista_municipioRES)
+            # print(maximo)
+            # Rango
+            rango = maximo - minimo
+            # print(rango)
+            # Suma
+            suma = 0
+            for i in data.lista_municipioRES:
+                suma += i
+            # print(suma)
+            # No. de datos
+            noDatos = len(data.lista_municipioRES)
+            # print(noDatos)
+
+
+            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["ANALISIS DESCRIPTIVO"]
+            
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+
+            # Imprimir Analisis Descriptivo
+            self.output.setText(final)
+
 
     # Función del Botón de Obtener Gráfica Dispersión
     def clickGraficaDispersion(self):

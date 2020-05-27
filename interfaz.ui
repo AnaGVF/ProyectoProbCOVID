@@ -62,7 +62,7 @@
     <rect>
      <x>170</x>
      <y>120</y>
-     <width>69</width>
+     <width>171</width>
      <height>22</height>
     </rect>
    </property>
@@ -80,11 +80,36 @@
      <string>Edad</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>Sector</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Entidad Ubicación Unidad Médica</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Entidad Nacimiento Paciente</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Entidad Residencia Paciente</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Municipio Residencia Paciente</string>
+    </property>
+   </item>
   </widget>
   <widget class="QPushButton" name="botonAnalisisDescriptivo">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>350</x>
      <y>120</y>
      <width>161</width>
      <height>23</height>
@@ -378,6 +403,11 @@
      <width>891</width>
      <height>281</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>OUTPUT</string>

@@ -4,6 +4,7 @@ import csv
 
 # Se abre el archivo csv
 f = open("200518COVID19MEXICO.csv", "r")
+# f = open(r"C:\Users\emili\Desktop\ProyectoProbCOVID\200518COVID19MEXICO.csv", "r")
 reader = csv.reader(f)
 
 # Lista con TODOS los datos (177 134 DATOS)
@@ -51,7 +52,7 @@ for item in datos:
 	lista_entidadUM.append(item[4])
 lista_entidadUM.pop(0)
 lista_entidadUM = [int(i) for i in lista_entidadUM]
-lista_entidadUM.sort()
+# lista_entidadUM.sort()
 # print(lista_entidadUM)
 
 # SEXO
@@ -141,7 +142,7 @@ for item in datos:
 	lista_edad.append(item[15])
 lista_edad.pop(0)
 lista_edad = [int(i) for i in lista_edad]
-lista_edad.sort()
+# lista_edad.sort()
 # print(lista_edad)
 
 # NACIONALIDAD (Mexicano o Extranjero)

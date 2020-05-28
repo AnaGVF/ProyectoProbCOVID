@@ -5,7 +5,9 @@
 # Created by: PyQt5 UI code generator 5.14.1
 #
 # WARNING! All changes made in this file will be lost!
-
+import matplotlib.pyplot as plt
+import random
+import numpy as np
 import statistics
 from tabulate import tabulate
 import datos as data
@@ -456,11 +458,35 @@ class Ui_Dialog(object):
     # Función del Botón de Obtener Gráfica Dispersión
     def clickGraficaDispersion(self):
         print("FUNCIONA BOTON GRAFICA DISPERSION")
-
-
+        self.GraficaCorrelacion()#GRAFICA DE DISPERSION 
     # Función del Botón de Obtener Análisis Correlación
+
+        #CREO QUE SERIA UNA BUENA IDEA QUITAR EL BOTON DE ANALISIS DE CORRELACION Y HACER QUE CUANDO SE SAQUE LA GRAFICA DE CORRELACION TAMBIEN APAREZCA EL CALCULO DE CORRELACION
     def clickAnalisisCorrelacion(self):
         print("FUNCIONA BOTON ANALISIS CORRELACION")
+        
+
+    #FUNCION QUE PROJECTA LA GRAFICA DE MATPLOT SOBRE LA DISPERSION
+    def GraficaCorrelacion(self):
+        y = data.lista_entidadUM     
+        x = data.lista_edad
+        dx = np.random.choice(np.arange(len(x)), 1000, replace=False)
+
+        y1= np.array(y)
+        x1= np.array(x)
+        
+        y_sample = y1[dx]
+        x_sample = x1[dx]
+
+        
+        plt.scatter(x_sample,y_sample)
+        plt.ylabel("Entidades Federativa")
+        plt.xlabel("Edad de los Casos")
+
+        
+        
+        plt.show()
+
 
 
 if __name__ == "__main__":

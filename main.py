@@ -244,7 +244,9 @@ class Ui_Dialog(object):
         self.tituloRegresion.setText(_translate("Dialog", "Regresión"))
         self.labelDatoYRegresion.setText(_translate("Dialog", "Dato Y"))
         self.botonRegresion.setText(_translate("Dialog", "Obtener Regresión"))
-
+        self.datoXCorrelacion.setItemText(0, _translate("Dialog", "Edad"))
+        self.datoYCorrelacion.setItemText(0, _translate("Dialog", "Entidad Federativa"))
+        
 
     # Función del Botón de Obtener Análisis Descriptivo
     def clickAnalisisDescriptivo(self):
@@ -560,6 +562,25 @@ class Ui_Dialog(object):
 
         #CREO QUE SERIA UNA BUENA IDEA QUITAR EL BOTON DE ANALISIS DE CORRELACION Y HACER QUE CUANDO SE SAQUE LA GRAFICA DE CORRELACION TAMBIEN APAREZCA EL CALCULO DE CORRELACION
     def clickAnalisisCorrelacion(self):
+        X = self.datoXCorrelacion.currentText()
+        Y = self.datoYCorrelacion.currentText()
+
+        if X == "Edad" and Y == "Entidad Federativa":
+            y = data.lista_entidadUM     
+            x = data.lista_edad
+
+            y1 = np.array(y)
+            x1 = np.array(x)
+            correlacion = np.corrcoef(x1, y1)[0, 1]
+
+            tablaCorrelacion = [[correlacion]]
+            headersCorrelacion = ["ANALISIS CORRELACION"]
+
+            finalCorrelacion = (tabulate(tablaCorrelacion, headersCorrelacion, colalign=(" ","center"), tablefmt="simple"))               
+
+            #Imprimir Analisis Correlacion
+            self.output.setText(finalCorrelacion)
+           
         print("FUNCIONA BOTON ANALISIS CORRELACION")
 
     def clickRegresion(self):

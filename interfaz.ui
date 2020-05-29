@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>931</width>
-    <height>631</height>
+    <width>936</width>
+    <height>810</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,7 +40,7 @@
   <widget class="QLabel" name="tituloAnalisisDescriptivo">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>10</x>
      <y>80</y>
      <width>191</width>
      <height>21</height>
@@ -60,7 +60,7 @@
   <widget class="QComboBox" name="comboBoxAnalisisDescriptivo">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>150</x>
      <y>120</y>
      <width>171</width>
      <height>22</height>
@@ -109,7 +109,7 @@
   <widget class="QPushButton" name="botonAnalisisDescriptivo">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>330</x>
      <y>120</y>
      <width>161</width>
      <height>23</height>
@@ -128,7 +128,7 @@
   <widget class="QLabel" name="labelSeleccioneDato">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>10</x>
      <y>120</y>
      <width>131</width>
      <height>16</height>
@@ -175,10 +175,10 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QLabel" name="tituloAnalisisDescriptivo_2">
+  <widget class="QLabel" name="tituloGraficaDispersion">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>10</x>
      <y>160</y>
      <width>191</width>
      <height>21</height>
@@ -198,7 +198,7 @@
   <widget class="QLabel" name="labelDatoXDispersion">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>10</x>
      <y>200</y>
      <width>51</width>
      <height>16</height>
@@ -216,10 +216,10 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="tituloAnalisisDescriptivo_3">
+  <widget class="QLabel" name="tituloAnalisisCorrelacion">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>10</x>
      <y>240</y>
      <width>191</width>
      <height>21</height>
@@ -239,7 +239,7 @@
   <widget class="QComboBox" name="datoXDispersion">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>200</y>
      <width>69</width>
      <height>22</height>
@@ -248,11 +248,16 @@
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <item>
+    <property name="text">
+     <string>Edad</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="labelDatoYDispersion">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>160</x>
      <y>200</y>
      <width>51</width>
      <height>16</height>
@@ -273,20 +278,25 @@
   <widget class="QComboBox" name="datoYDispersion">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>220</x>
      <y>200</y>
-     <width>69</width>
+     <width>121</width>
      <height>22</height>
     </rect>
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <item>
+    <property name="text">
+     <string>Entidad Federativa</string>
+    </property>
+   </item>
   </widget>
   <widget class="QPushButton" name="botonGraficaDispersion">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>360</x>
      <y>200</y>
      <width>161</width>
      <height>23</height>
@@ -308,7 +318,7 @@
   <widget class="QLabel" name="labelDatoYCorrelacion">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>160</x>
      <y>280</y>
      <width>51</width>
      <height>16</height>
@@ -329,7 +339,7 @@
   <widget class="QComboBox" name="datoYCorrelacion">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>220</x>
      <y>280</y>
      <width>69</width>
      <height>22</height>
@@ -342,7 +352,7 @@
   <widget class="QComboBox" name="datoXCorrelacion">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>280</y>
      <width>69</width>
      <height>22</height>
@@ -355,7 +365,7 @@
   <widget class="QLabel" name="labelDatoXCorrelacion">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>10</x>
      <y>280</y>
      <width>51</width>
      <height>16</height>
@@ -376,7 +386,7 @@
   <widget class="QPushButton" name="botonAnalisisCorrelacion">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>300</x>
      <y>280</y>
      <width>161</width>
      <height>23</height>
@@ -400,8 +410,8 @@
     <rect>
      <x>20</x>
      <y>340</y>
-     <width>891</width>
-     <height>281</height>
+     <width>541</width>
+     <height>461</height>
     </rect>
    </property>
    <property name="font">
@@ -414,6 +424,137 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="output2">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>340</y>
+     <width>361</width>
+     <height>461</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>OUTPUT 2</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelDatoXRegresion">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>280</y>
+     <width>51</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Dato X</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="datoYRegresion">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>280</y>
+     <width>69</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+  </widget>
+  <widget class="QLabel" name="tituloRegresion">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>240</y>
+     <width>191</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Regresión</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="datoXRegresion">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>280</y>
+     <width>69</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelDatoYRegresion">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>280</y>
+     <width>51</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Dato Y</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="botonRegresion">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>280</y>
+     <width>111</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="text">
+    <string>Obtener Regresión</string>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

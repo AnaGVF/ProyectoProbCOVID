@@ -111,7 +111,7 @@
     <rect>
      <x>330</x>
      <y>120</y>
-     <width>161</width>
+     <width>151</width>
      <height>23</height>
     </rect>
    </property>
@@ -257,7 +257,7 @@
   <widget class="QLabel" name="labelDatoYDispersion">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>150</x>
      <y>200</y>
      <width>51</width>
      <height>16</height>
@@ -278,7 +278,7 @@
   <widget class="QComboBox" name="datoYDispersion">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>210</x>
      <y>200</y>
      <width>121</width>
      <height>22</height>
@@ -296,9 +296,9 @@
   <widget class="QPushButton" name="botonGraficaDispersion">
    <property name="geometry">
     <rect>
-     <x>360</x>
+     <x>340</x>
      <y>200</y>
-     <width>161</width>
+     <width>141</width>
      <height>23</height>
     </rect>
    </property>
@@ -318,7 +318,7 @@
   <widget class="QLabel" name="labelDatoYCorrelacion">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>150</x>
      <y>280</y>
      <width>51</width>
      <height>16</height>
@@ -339,15 +339,20 @@
   <widget class="QComboBox" name="datoYCorrelacion">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>210</x>
      <y>280</y>
-     <width>69</width>
+     <width>121</width>
      <height>22</height>
     </rect>
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <item>
+    <property name="text">
+     <string>Entidad Federativa</string>
+    </property>
+   </item>
   </widget>
   <widget class="QComboBox" name="datoXCorrelacion">
    <property name="geometry">
@@ -361,6 +366,11 @@
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <item>
+    <property name="text">
+     <string>Edad</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="labelDatoXCorrelacion">
    <property name="geometry">
@@ -386,9 +396,9 @@
   <widget class="QPushButton" name="botonAnalisisCorrelacion">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>340</x>
      <y>280</y>
-     <width>161</width>
+     <width>151</width>
      <height>23</height>
     </rect>
    </property>
@@ -471,15 +481,20 @@
   <widget class="QComboBox" name="datoYRegresion">
    <property name="geometry">
     <rect>
-     <x>710</x>
+     <x>700</x>
      <y>280</y>
-     <width>69</width>
+     <width>121</width>
      <height>22</height>
     </rect>
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <item>
+    <property name="text">
+     <string>Entidad Federativa</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="tituloRegresion">
    <property name="geometry">
@@ -513,11 +528,16 @@
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
+   <item>
+    <property name="text">
+     <string>Edad</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="labelDatoYRegresion">
    <property name="geometry">
     <rect>
-     <x>650</x>
+     <x>640</x>
      <y>280</y>
      <width>51</width>
      <height>16</height>
@@ -538,9 +558,9 @@
   <widget class="QPushButton" name="botonRegresion">
    <property name="geometry">
     <rect>
-     <x>800</x>
+     <x>830</x>
      <y>280</y>
-     <width>111</width>
+     <width>101</width>
      <height>23</height>
     </rect>
    </property>

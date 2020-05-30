@@ -577,17 +577,45 @@ class Ui_Dialog(object):
 
             y1 = np.array(y)
             x1 = np.array(x)
+
+            mediaX = statistics.mean(data.lista_edad)
+            mediaY = statistics.mean(data.lista_entidadUM)
+            sumaX = 0
+            for i in data.lista_edad:
+                sumaX += i
+                
+                sumaY = 0
+            for e in data.lista_edad:
+                sumaY += e
+
+            Columna1 = 0
+            for i in data.lista_edad:
+                n = i-mediaX
+                Columna1 += n
+
+            Columna2 = 0
+            for i in data.lista_edad:
+                n = i-mediaY
+                Columna2 += n
+
+            Columna3 = (sumaX - mediaX)*(sumaY - mediaY)
+            Columna4 = (sumaX - mediaX)**2
+            Columna5 = (sumaY - mediaY)**2
+            Columna6 = (Columna1**2)**0.5
+            Columna7 = (Columna2**2)**0.5
             correlacion = np.corrcoef(x1, y1)[0, 1]
 
-            tablaCorrelacion = [[correlacion]]
-            headersCorrelacion = ["ANALISIS CORRELACION"]
+            tableC = [["X-M(X)", Columna1], ["Y-M(Y)", Columna2], ["(X-M(X))(Y-M(Y))", Columna3], ["X-M(X)^2", Columna4], ["Y-M(Y)^2", Columna5], ["(sum(X-X)^2)^0.5", Columna6], ["(sum(Y-Y)^2)^0.5", Columna7], ["Correlacion", correlacion]]
+            headersC = ["ANALISIS DE CORRELACION"]
+            
+            finalC = (tabulate(tableC, headersC, colalign=(" ","center"), tablefmt="simple"))               
 
-            finalCorrelacion = (tabulate(tablaCorrelacion, headersCorrelacion, colalign=(" ","center"), tablefmt="simple"))               
+            # Imprimir Analisis Descriptivo
+            self.output.setText(finalC)
 
-            #Imprimir Analisis Correlacion
-            self.output.setText(finalCorrelacion)
-           
+                   
         print("FUNCIONA BOTON ANALISIS CORRELACION")
+        print(Columna1)
 
     def clickRegresion(self):
         print("FUNCIONA BOTON REGRESION")

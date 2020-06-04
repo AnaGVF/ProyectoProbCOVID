@@ -10,6 +10,7 @@ import random
 import numpy as np
 import statistics
 from tabulate import tabulate
+# from prettytable import PrettyTable
 import datos as data
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -262,6 +263,7 @@ class Ui_Dialog(object):
         if variable == "Edad":
             # Media
             media = statistics.mean(data.lista_edad)
+            mediaROUNDED = round(media, 4)
             # print(media)
             # Mediana
             mediana = statistics.median(data.lista_edad)
@@ -271,9 +273,11 @@ class Ui_Dialog(object):
             # print(moda)
             # Desv. Estándar
             devEstandar = statistics.stdev(data.lista_edad)
+            devEstandarROUNDED = round(devEstandar, 4)
             # print(devEstandar)
             # Varianza
             varianza = statistics.variance(data.lista_edad)
+            varianzaROUNDED = round(varianza, 4)
             # print(varianza)            
             # Mínimo
             minimo = min(data.lista_edad)
@@ -293,22 +297,22 @@ class Ui_Dialog(object):
             noDatos = len(data.lista_edad)
             # print(noDatos)
 
-
-            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
-            headers = ["ANALISIS DESCRIPTIVO"]
+            table = [["Media", mediaROUNDED], ["Mediana", mediana], ["Moda", moda], ["D. Estandar", devEstandarROUNDED], ["Varianza", varianzaROUNDED], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["A. Descriptivo", "Datos"]
             
-            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
 
             # Imprimir Analisis Descriptivo
             self.output.setText(final)
 
-             # Imprimir Diccionario de Términos
+            # Imprimir Diccionario de Términos
             self.output2.setText(" ")
 
         # SECTOR
         elif variable == "Sector":
             # Media
             media = statistics.mean(data.lista_sector)
+            mediaROUNDED = round(media, 4)
             # print(media)
             # Mediana
             mediana = statistics.median(data.lista_sector)
@@ -318,9 +322,11 @@ class Ui_Dialog(object):
             # print(moda)
             # Desv. Estándar
             devEstandar = statistics.stdev(data.lista_sector)
+            devEstandarROUNDED = round(devEstandar, 4)
             # print(devEstandar)
             # Varianza
             varianza = statistics.variance(data.lista_sector)
+            varianzaROUNDED = round(varianza, 4)
             # print(varianza)            
             # Mínimo
             minimo = min(data.lista_sector)
@@ -341,26 +347,22 @@ class Ui_Dialog(object):
             # print(noDatos)
 
 
-            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
-            headers = ["ANALISIS DESCRIPTIVO"]
+            table = [["Media", mediaROUNDED], ["Mediana", mediana], ["Moda", moda], ["D. Estandar", devEstandarROUNDED], ["Varianza", varianzaROUNDED], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["A. Descriptivo", "Datos"]
             
-            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
 
             # Imprimir Analisis Descriptivo
             self.output.setText(final)
 
-            table2 = [["1", "CRUZ ROJA"], ["2", "DIF"], ["3", "ESTATAL"], ["4", "IMSS"], ["5", "IMSS-BIENESTAR"], ["6", "ISSSTE"], ["7", "MUNICIPAL"], ["8", "PEMEX"], ["9", "PRIVADA"], ["10", "SEDENA"], ["11", "SEMAR"], ["12", "SSA"], ["13", "UNIVERSITARIO"], ["99", "NO ESPECIFICADO"]]
-            headers2 = ["CLAVE", "DESCRIPCION"]
-            
-            final2 = (tabulate(table2, headers2, colalign=(" ","center"), tablefmt="simple")) 
-
-            # Imprimir Diccionario de Términos
-            self.output2.setText(final2)
+            image = QtGui.QImage(QtGui.QImageReader("Images/CatalogoSector.JPG").read())
+            self.output2.setPixmap(QtGui.QPixmap(image))
 
         # ENTIDAD UBICACION UNIDAD MEDICA
         elif variable == "Entidad Ubicación Unidad Médica":
             # Media
             media = statistics.mean(data.lista_entidadUM)
+            mediaROUNDED = round(media, 4)
             # print(media)
             # Mediana
             mediana = statistics.median(data.lista_entidadUM)
@@ -370,9 +372,11 @@ class Ui_Dialog(object):
             # print(moda)
             # Desv. Estándar
             devEstandar = statistics.stdev(data.lista_entidadUM)
+            devEstandarROUNDED = round(devEstandar, 4)
             # print(devEstandar)
             # Varianza
             varianza = statistics.variance(data.lista_entidadUM)
+            varianzaROUNDED = round(varianza, 4)
             # print(varianza)            
             # Mínimo
             minimo = min(data.lista_entidadUM)
@@ -393,26 +397,23 @@ class Ui_Dialog(object):
             # print(noDatos)
 
 
-            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
-            headers = ["ANALISIS DESCRIPTIVO"]
+            table = [["Media", mediaROUNDED], ["Mediana", mediana], ["Moda", moda], ["D. Estandar", devEstandarROUNDED], ["Varianza", varianzaROUNDED], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["A. Descriptivo", "Datos"]
             
-            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
 
             # Imprimir Analisis Descriptivo
             self.output.setText(final)
 
-            table2 = [["1", "AGUASCALIENTES"], ["2", "BAJA CALIFORNIA"], ["3", "BAJA CALIFORNIA SUR"], ["4", "CAMPECHE"], ["5", "COAHUILA"], ["6", "COLIMA"], ["7", "CHIAPAS"], ["8", "CHIHUAHUA"], ["9", "CIUDAD DE MÉXICO"], ["10", "DURANGO"], ["11", "GUANAJUATO"], ["12", "GUERRERO"], ["13", "HIDALGO"], ["14", "JALISCO"], ["15", "MÉXICO"], ["16", "MICHOACÁN"], ["17", "MORELOS"], ["18", "NAYARIT"], ["19", "NUEVO LEÓN"], ["20", "OAXACA"], ["21", "PUEBLA"], ["22", "QUERÉTARO"], ["23", "QUINTANA ROO"], ["24", "SAN LUIS POTOSÍ"], ["25", "SINALOA"], ["26", "SONORA"], ["27", "TABASCO"], ["28", "TAMAULIPAS"], ["29", "TLAXCALA"], ["30", "VERACRUZ"], ["31", "YUCATÁN"], ["32", "ZACATECAS"], ["36", "ESTADOS UNIDOS MEXICANOS"], ["97", "NO APLICA"], ["98", "SE IGNORA"], ["99", "NO ESPECIFICADO"]]
-            headers2 = ["CLAVE ENTIDAD", "ENTIDAD FEDERATIVA"]
-            
-            final2 = (tabulate(table2, headers2, colalign=(" ","center"), tablefmt="simple")) 
-
-            # Imprimir Diccionario de Términos
-            self.output2.setText(final2)
+            # Imprimir Diccionario Terminos
+            image = QtGui.QImage(QtGui.QImageReader("Images/CatalogoEntidadesSCALED.jpg").read())
+            self.output2.setPixmap(QtGui.QPixmap(image))
 
         # ENTIDAD NACIMIENTO PACIENTE
         elif variable == "Entidad Nacimiento Paciente":
             # Media
             media = statistics.mean(data.lista_entidadNAC)
+            mediaROUNDED = round(media, 4)
             # print(media)
             # Mediana
             mediana = statistics.median(data.lista_entidadNAC)
@@ -422,9 +423,11 @@ class Ui_Dialog(object):
             # print(moda)
             # Desv. Estándar
             devEstandar = statistics.stdev(data.lista_entidadNAC)
+            devEstandarROUNDED = round(devEstandar, 4)
             # print(devEstandar)
             # Varianza
             varianza = statistics.variance(data.lista_entidadNAC)
+            varianzaROUNDED = round(varianza, 4)
             # print(varianza)            
             # Mínimo
             minimo = min(data.lista_entidadNAC)
@@ -445,26 +448,23 @@ class Ui_Dialog(object):
             # print(noDatos)
 
 
-            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
-            headers = ["ANALISIS DESCRIPTIVO"]
+            table = [["Media", mediaROUNDED], ["Mediana", mediana], ["Moda", moda], ["D. Estandar", devEstandarROUNDED], ["Varianza", varianzaROUNDED], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["A. Descriptivo", "Datos"]
             
-            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
 
             # Imprimir Analisis Descriptivo
             self.output.setText(final)
 
-            table2 = [["1", "AGUASCALIENTES"], ["2", "BAJA CALIFORNIA"], ["3", "BAJA CALIFORNIA SUR"], ["4", "CAMPECHE"], ["5", "COAHUILA"], ["6", "COLIMA"], ["7", "CHIAPAS"], ["8", "CHIHUAHUA"], ["9", "CIUDAD DE MÉXICO"], ["10", "DURANGO"], ["11", "GUANAJUATO"], ["12", "GUERRERO"], ["13", "HIDALGO"], ["14", "JALISCO"], ["15", "MÉXICO"], ["16", "MICHOACÁN"], ["17", "MORELOS"], ["18", "NAYARIT"], ["19", "NUEVO LEÓN"], ["20", "OAXACA"], ["21", "PUEBLA"], ["22", "QUERÉTARO"], ["23", "QUINTANA ROO"], ["24", "SAN LUIS POTOSÍ"], ["25", "SINALOA"], ["26", "SONORA"], ["27", "TABASCO"], ["28", "TAMAULIPAS"], ["29", "TLAXCALA"], ["30", "VERACRUZ"], ["31", "YUCATÁN"], ["32", "ZACATECAS"], ["36", "ESTADOS UNIDOS MEXICANOS"], ["97", "NO APLICA"], ["98", "SE IGNORA"], ["99", "NO ESPECIFICADO"]]
-            headers2 = ["CLAVE ENTIDAD", "ENTIDAD FEDERATIVA"]
-            
-            final2 = (tabulate(table2, headers2, colalign=(" ","center"), tablefmt="simple")) 
-
-            # Imprimir Diccionario de Términos
-            self.output2.setText(final2)
+            # Imprimir Diccionario Terminos
+            image = QtGui.QImage(QtGui.QImageReader("Images/CatalogoEntidadesSCALED.jpg").read())
+            self.output2.setPixmap(QtGui.QPixmap(image))
 
         # ENTIDAD RESIDENCIA PACIENTE
         elif variable == "Entidad Residencia Paciente":
             # Media
             media = statistics.mean(data.lista_entidadRES)
+            mediaROUNDED = round(media, 4)
             # print(media)
             # Mediana
             mediana = statistics.median(data.lista_entidadRES)
@@ -474,9 +474,11 @@ class Ui_Dialog(object):
             # print(moda)
             # Desv. Estándar
             devEstandar = statistics.stdev(data.lista_entidadRES)
+            devEstandarROUNDED = round(devEstandar, 4)
             # print(devEstandar)
             # Varianza
             varianza = statistics.variance(data.lista_entidadRES)
+            varianzaROUNDED = round(varianza, 4)
             # print(varianza)            
             # Mínimo
             minimo = min(data.lista_entidadRES)
@@ -497,26 +499,23 @@ class Ui_Dialog(object):
             # print(noDatos)
 
 
-            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
-            headers = ["ANALISIS DESCRIPTIVO"]
+            table = [["Media", mediaROUNDED], ["Mediana", mediana], ["Moda", moda], ["D. Estandar", devEstandarROUNDED], ["Varianza", varianzaROUNDED], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["A. Descriptivo", "Datos"]
             
-            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
 
             # Imprimir Analisis Descriptivo
             self.output.setText(final)
 
-            table2 = [["1", "AGUASCALIENTES"], ["2", "BAJA CALIFORNIA"], ["3", "BAJA CALIFORNIA SUR"], ["4", "CAMPECHE"], ["5", "COAHUILA"], ["6", "COLIMA"], ["7", "CHIAPAS"], ["8", "CHIHUAHUA"], ["9", "CIUDAD DE MÉXICO"], ["10", "DURANGO"], ["11", "GUANAJUATO"], ["12", "GUERRERO"], ["13", "HIDALGO"], ["14", "JALISCO"], ["15", "MÉXICO"], ["16", "MICHOACÁN"], ["17", "MORELOS"], ["18", "NAYARIT"], ["19", "NUEVO LEÓN"], ["20", "OAXACA"], ["21", "PUEBLA"], ["22", "QUERÉTARO"], ["23", "QUINTANA ROO"], ["24", "SAN LUIS POTOSÍ"], ["25", "SINALOA"], ["26", "SONORA"], ["27", "TABASCO"], ["28", "TAMAULIPAS"], ["29", "TLAXCALA"], ["30", "VERACRUZ"], ["31", "YUCATÁN"], ["32", "ZACATECAS"], ["36", "ESTADOS UNIDOS MEXICANOS"], ["97", "NO APLICA"], ["98", "SE IGNORA"], ["99", "NO ESPECIFICADO"]]
-            headers2 = ["CLAVE ENTIDAD", "ENTIDAD FEDERATIVA"]
-            
-            final2 = (tabulate(table2, headers2, colalign=(" ","center"), tablefmt="simple")) 
-
-            # Imprimir Diccionario de Términos
-            self.output2.setText(final2)
+            # Imprimir Diccionario Terminos
+            image = QtGui.QImage(QtGui.QImageReader("Images/CatalogoEntidadesSCALED.jpg").read())
+            self.output2.setPixmap(QtGui.QPixmap(image))
 
         # MUNICIPIO RESIDENCIA PACIENTE
         elif variable == "Municipio Residencia Paciente":
             # Media
             media = statistics.mean(data.lista_municipioRES)
+            mediaROUNDED = round(media, 4)
             # print(media)
             # Mediana
             mediana = statistics.median(data.lista_municipioRES)
@@ -526,9 +525,11 @@ class Ui_Dialog(object):
             # print(moda)
             # Desv. Estándar
             devEstandar = statistics.stdev(data.lista_municipioRES)
+            devEstandarROUNDED = round(devEstandar, 4)
             # print(devEstandar)
             # Varianza
             varianza = statistics.variance(data.lista_municipioRES)
+            varianzaROUNDED = round(varianza, 4)
             # print(varianza)            
             # Mínimo
             minimo = min(data.lista_municipioRES)
@@ -549,10 +550,10 @@ class Ui_Dialog(object):
             # print(noDatos)
 
 
-            table = [["Media", media], ["Mediana", mediana], ["Moda", moda], ["Desv. Estandar", devEstandar], ["Varianza", varianza], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
-            headers = ["ANALISIS DESCRIPTIVO"]
+            table = [["Media", mediaROUNDED], ["Mediana", mediana], ["Moda", moda], ["D. Estandar", devEstandarROUNDED], ["Varianza", varianzaROUNDED], ["Minimo", minimo], ["Maximo", maximo], ["Rango", rango], ["Suma", suma], ["No. de datos", noDatos]]
+            headers = ["A. Descriptivo", "Datos"]
             
-            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="simple"))               
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
 
             # Imprimir Analisis Descriptivo
             self.output.setText(final)
@@ -606,12 +607,14 @@ class Ui_Dialog(object):
             correlacion = np.corrcoef(x1, y1)[0, 1]
 
             tableC = [["X-M(X)", Columna1], ["Y-M(Y)", Columna2], ["(X-M(X))(Y-M(Y))", Columna3], ["X-M(X)^2", Columna4], ["Y-M(Y)^2", Columna5], ["(sum(X-X)^2)^0.5", Columna6], ["(sum(Y-Y)^2)^0.5", Columna7], ["Correlacion", correlacion]]
-            headersC = ["ANALISIS DE CORRELACION"]
+            headersC = ["A. de Correlacion", "Datos"]
             
             finalC = (tabulate(tableC, headersC, colalign=(" ","center"), tablefmt="simple"))               
 
             # Imprimir Analisis Descriptivo
             self.output.setText(finalC)
+
+            self.output2.setText(" ")
 
                    
         print("FUNCIONA BOTON ANALISIS CORRELACION")

@@ -621,6 +621,41 @@ class Ui_Dialog(object):
         print(Columna1)
 
     def clickRegresion(self):
+        x = self.datoXCorrelacion.currentText()
+        y = self.datoYCorrelacion.currentText()
+        if x == "Edad" and y == "Entidad Federativa":
+          y = data.lista_entidadUM     
+        x = data.lista_edad
+        n = len(x)
+        x = np.array(x)
+        y = np.array(y)
+        sumx = sum(x)
+        sumy = sum(y)
+        sumx2 = sum(x*x)
+        sumy2 = sum(y*y)
+        sumxy = sum(x*y)
+        promx = sumx/n
+        promy = sumy/n
+
+        m = (sumx*sumy - n*sumxy)/(sumx**2 - n*sumx2)
+        b = promy - m*promx
+        table = [["Suma Edad", sumx], ["Suma Entidad", sumy], ["Edad^2", sumx2], ["Entidad^2", sumy2], ["Suma Edad y Entidad", sumxy], ["Prom. Edad", promx], ["Prom. Entidad", promy], ["Coeficiente a", m], ["Coneficiente b", b]]
+        headers = ["Datos Regresion", "Datos"]
+            
+        final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
+
+        # Imprimir Analisis Descriptivo
+        self.output2.setText(final)
+
+        plt.plot(x, y, 'o', label='Datos')
+        plt.plot(x, m*x + b, label='Ajuste')
+        plt.xlabel('edad')
+        plt.ylabel('Entidad Federativa')
+        plt.title('Regresion')
+        plt.grid()
+        plt.legend()
+        plt.show()
+
         print("FUNCIONA BOTON REGRESION")
         
 

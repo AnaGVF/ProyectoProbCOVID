@@ -644,10 +644,18 @@ class Ui_Dialog(object):
             
         final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
 
+
+
+        #REDIMENSIONAR LAS VARIABLES PARA QUE TENGAN UN SAMPLEO DE 1000
+
+        sr = np.random.choice(np.arange(len(x)), 1000, replace=False)
+
+        sample_x = x[sr]
+        sample_y = y[sr]
         # Imprimir Analisis Descriptivo
         self.output2.setText(final)
 
-        plt.plot(x, y, 'o', label='Datos')
+        plt.plot(sample_x, sample_y, 'o', label='Datos')
         plt.plot(x, m*x + b, label='Ajuste')
         plt.xlabel('edad')
         plt.ylabel('Entidad Federativa')

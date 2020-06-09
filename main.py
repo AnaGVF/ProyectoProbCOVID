@@ -606,7 +606,7 @@ class Ui_Dialog(object):
             Columna7 = (Columna2**2)**0.5
             correlacion = np.corrcoef(x1, y1)[0, 1]
 
-            tableC = [["X-M(X)", Columna1], ["Y-M(Y)", Columna2], ["(X-M(X))(Y-M(Y))", Columna3], ["X-M(X)^2", Columna4], ["Y-M(Y)^2", Columna5], ["(sum(X-X)^2)^0.5", Columna6], ["(sum(Y-Y)^2)^0.5", Columna7], ["Correlacion", correlacion]]
+            tableC = [["X-M(X)", Columna1], ["Y-M(Y)", Columna2], ["(X-M(X))(Y-M(Y))", Columna3], ["X-M(X)^2", Columna4], ["Y-M(Y)^2", Columna5], ["(sum(X-X)^2)^0.5", Columna6], ["(sum(Y-Y)^2)^0.5", Columna7], ["Coeficiente de Correlacion", correlacion]]
             headersC = ["A. de Correlacion", "Datos"]
             
             finalC = (tabulate(tableC, headersC, colalign=(" ","center"), tablefmt="simple"))               
@@ -639,7 +639,7 @@ class Ui_Dialog(object):
 
         m = (sumx*sumy - n*sumxy)/(sumx**2 - n*sumx2)
         b = promy - m*promx
-        table = [["Suma Edad", sumx], ["Suma Entidad", sumy], ["Edad^2", sumx2], ["Entidad^2", sumy2], ["Suma Edad y Entidad", sumxy], ["Prom. Edad", promx], ["Prom. Entidad", promy], ["Coeficiente a", m], ["Coneficiente b", b]]
+        table = [["Suma Edad", sumx], ["Suma Entidad", sumy], ["Edad^2", sumx2], ["Entidad^2", sumy2], ["Suma Edad y Entidad", sumxy], ["Prom. Edad", promx], ["Prom. Entidad", promy], ["Coeficiente a", m], ["Coeficiente b", b], ["R2", m]]
         headers = ["Datos Regresion", "Datos"]
             
         final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
@@ -652,7 +652,9 @@ class Ui_Dialog(object):
 
         sample_x = x[sr]
         sample_y = y[sr]
-        # Imprimir Analisis Descriptivo
+        # Imprimir Regresión
+        self.output.setText(" ")
+
         self.output2.setText(final)
 
         plt.plot(sample_x, sample_y, 'o', label='Datos')

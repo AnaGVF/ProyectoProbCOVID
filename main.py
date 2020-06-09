@@ -113,6 +113,8 @@ class Ui_Dialog(object):
         self.datoYDispersion.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.datoYDispersion.setObjectName("datoYDispersion")
         self.datoYDispersion.addItem("")
+        self.datoYDispersion.addItem("")
+        self.datoYDispersion.addItem("")
         self.botonGraficaDispersion = QtWidgets.QPushButton(Dialog)
         self.botonGraficaDispersion.setGeometry(QtCore.QRect(340, 200, 141, 23))
         self.botonGraficaDispersion.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -130,6 +132,8 @@ class Ui_Dialog(object):
         self.datoYCorrelacion.setGeometry(QtCore.QRect(210, 280, 121, 22))
         self.datoYCorrelacion.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.datoYCorrelacion.setObjectName("datoYCorrelacion")
+        self.datoYCorrelacion.addItem("")
+        self.datoYCorrelacion.addItem("")
         self.datoYCorrelacion.addItem("")
         self.datoXCorrelacion = QtWidgets.QComboBox(Dialog)
         self.datoXCorrelacion.setGeometry(QtCore.QRect(70, 280, 69, 22))
@@ -154,6 +158,7 @@ class Ui_Dialog(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.output.setFont(font)
+        self.output.setText("")
         self.output.setAlignment(QtCore.Qt.AlignCenter)
         self.output.setObjectName("output")
         self.output2 = QtWidgets.QLabel(Dialog)
@@ -161,6 +166,7 @@ class Ui_Dialog(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         self.output2.setFont(font)
+        self.output2.setText("")
         self.output2.setAlignment(QtCore.Qt.AlignCenter)
         self.output2.setObjectName("output2")
         self.labelDatoXRegresion = QtWidgets.QLabel(Dialog)
@@ -174,6 +180,8 @@ class Ui_Dialog(object):
         self.datoYRegresion.setGeometry(QtCore.QRect(700, 280, 121, 22))
         self.datoYRegresion.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.datoYRegresion.setObjectName("datoYRegresion")
+        self.datoYRegresion.addItem("")
+        self.datoYRegresion.addItem("")
         self.datoYRegresion.addItem("")
         self.tituloRegresion = QtWidgets.QLabel(Dialog)
         self.tituloRegresion.setGeometry(QtCore.QRect(500, 240, 191, 21))
@@ -239,16 +247,20 @@ class Ui_Dialog(object):
         self.datoXDispersion.setItemText(0, _translate("Dialog", "Edad"))
         self.labelDatoYDispersion.setText(_translate("Dialog", "Dato Y"))
         self.datoYDispersion.setItemText(0, _translate("Dialog", "Entidad Federativa"))
+        self.datoYDispersion.setItemText(1, _translate("Dialog", "Entidad Nacimiento"))
+        self.datoYDispersion.setItemText(2, _translate("Dialog", "Entidad Residencia"))
         self.botonGraficaDispersion.setText(_translate("Dialog", "Obtener Gráfica Dispersión"))
         self.labelDatoYCorrelacion.setText(_translate("Dialog", "Dato Y"))
         self.datoYCorrelacion.setItemText(0, _translate("Dialog", "Entidad Federativa"))
+        self.datoYCorrelacion.setItemText(1, _translate("Dialog", "Entidad Nacimiento"))
+        self.datoYCorrelacion.setItemText(2, _translate("Dialog", "Entidad Residencia"))
         self.datoXCorrelacion.setItemText(0, _translate("Dialog", "Edad"))
         self.labelDatoXCorrelacion.setText(_translate("Dialog", "Dato X"))
         self.botonAnalisisCorrelacion.setText(_translate("Dialog", "Obtener Análisis Correlación"))
-        self.output.setText(_translate("Dialog", "OUTPUT"))
-        self.output2.setText(_translate("Dialog", "OUTPUT 2"))
         self.labelDatoXRegresion.setText(_translate("Dialog", "Dato X"))
         self.datoYRegresion.setItemText(0, _translate("Dialog", "Entidad Federativa"))
+        self.datoYRegresion.setItemText(1, _translate("Dialog", "Entidad Nacimiento"))
+        self.datoYRegresion.setItemText(2, _translate("Dialog", "Entidad Residencia"))
         self.tituloRegresion.setText(_translate("Dialog", "Regresión"))
         self.datoXRegresion.setItemText(0, _translate("Dialog", "Edad"))
         self.labelDatoYRegresion.setText(_translate("Dialog", "Dato Y"))
@@ -616,55 +628,67 @@ class Ui_Dialog(object):
 
             self.output2.setText(" ")
 
+            print(Columna1)
+
+        elif X == "Edad" and Y == "Entidad Nacimiento":
+            print("ENTIDAD NACIMIENTO")
+
+        elif X == "Edad" and Y == "Entidad Residencia":
+            print("ENTIDAD RESIDENCIA")
+
                    
         print("FUNCIONA BOTON ANALISIS CORRELACION")
-        print(Columna1)
+        
 
     def clickRegresion(self):
         x = self.datoXCorrelacion.currentText()
         y = self.datoYCorrelacion.currentText()
         if x == "Edad" and y == "Entidad Federativa":
-          y = data.lista_entidadUM     
-        x = data.lista_edad
-        n = len(x)
-        x = np.array(x)
-        y = np.array(y)
-        sumx = sum(x)
-        sumy = sum(y)
-        sumx2 = sum(x*x)
-        sumy2 = sum(y*y)
-        sumxy = sum(x*y)
-        promx = sumx/n
-        promy = sumy/n
+            y = data.lista_entidadUM     
+            x = data.lista_edad
+            n = len(x)
+            x = np.array(x)
+            y = np.array(y)
+            sumx = sum(x)
+            sumy = sum(y)
+            sumx2 = sum(x*x)
+            sumy2 = sum(y*y)
+            sumxy = sum(x*y)
+            promx = sumx/n
+            promy = sumy/n
 
-        m = (sumx*sumy - n*sumxy)/(sumx**2 - n*sumx2)
-        b = promy - m*promx
-        table = [["Suma Edad", sumx], ["Suma Entidad", sumy], ["Edad^2", sumx2], ["Entidad^2", sumy2], ["Suma Edad y Entidad", sumxy], ["Prom. Edad", promx], ["Prom. Entidad", promy], ["Coeficiente a", m], ["Coeficiente b", b], ["R2", m]]
-        headers = ["Datos Regresion", "Datos"]
+            m = (sumx*sumy - n*sumxy)/(sumx**2 - n*sumx2)
+            b = promy - m*promx
+            table = [["Suma Edad", sumx], ["Suma Entidad", sumy], ["Edad^2", sumx2], ["Entidad^2", sumy2], ["Suma Edad y Entidad", sumxy], ["Prom. Edad", promx], ["Prom. Entidad", promy], ["Coeficiente a", m], ["Coeficiente b", b], ["R2", m]]
+            headers = ["Datos Regresion", "Datos"]
             
-        final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
-
-
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
 
         #REDIMENSIONAR LAS VARIABLES PARA QUE TENGAN UN SAMPLEO DE 1000
 
-        sr = np.random.choice(np.arange(len(x)), 1000, replace=False)
+            sr = np.random.choice(np.arange(len(x)), 1000, replace=False)
 
-        sample_x = x[sr]
-        sample_y = y[sr]
-        # Imprimir Regresión
-        self.output.setText(" ")
+            sample_x = x[sr]
+            sample_y = y[sr]
+            # Imprimir Regresión
+            self.output.setText(" ")
 
-        self.output2.setText(final)
+            self.output2.setText(final)
 
-        plt.plot(sample_x, sample_y, 'o', label='Datos')
-        plt.plot(x, m*x + b, label='Ajuste')
-        plt.xlabel('edad')
-        plt.ylabel('Entidad Federativa')
-        plt.title('Regresion')
-        plt.grid()
-        plt.legend()
-        plt.show()
+            plt.plot(sample_x, sample_y, 'o', label='Datos')
+            plt.plot(x, m*x + b, label='Ajuste')
+            plt.xlabel('edad')
+            plt.ylabel('Entidad Federativa')
+            plt.title('Regresion')
+            plt.grid()
+            plt.legend()
+            plt.show()
+
+        elif x == "Edad" and y == "Entidad Nacimiento":
+            print("ENTIDAD NACIMIENTO")
+
+        elif x == "Edad" and y == "Entidad Residencia":
+            print("ENTIDAD RESIDENCIA")
 
         print("FUNCIONA BOTON REGRESION")
         
@@ -689,11 +713,9 @@ class Ui_Dialog(object):
             plt.scatter(x_sample,y_sample)
             plt.ylabel("Entidades Federativa")
             plt.xlabel("Edad de los Casos")
-
-        
+       
         
             plt.show()
-
 
 
 if __name__ == "__main__":

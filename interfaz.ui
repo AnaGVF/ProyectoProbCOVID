@@ -292,6 +292,16 @@
      <string>Entidad Federativa</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>Entidad Nacimiento</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Entidad Residencia</string>
+    </property>
+   </item>
   </widget>
   <widget class="QPushButton" name="botonGraficaDispersion">
    <property name="geometry">
@@ -351,6 +361,16 @@
    <item>
     <property name="text">
      <string>Entidad Federativa</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Entidad Nacimiento</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Entidad Residencia</string>
     </property>
    </item>
   </widget>
@@ -430,7 +450,7 @@
     </font>
    </property>
    <property name="text">
-    <string>OUTPUT</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -451,7 +471,7 @@
     </font>
    </property>
    <property name="text">
-    <string>OUTPUT 2</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -493,6 +513,16 @@
    <item>
     <property name="text">
      <string>Entidad Federativa</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Entidad Nacimiento</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Entidad Residencia</string>
     </property>
    </item>
   </widget>

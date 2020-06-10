@@ -631,18 +631,106 @@ class Ui_Dialog(object):
             print(Columna1)
 
         elif X == "Edad" and Y == "Entidad Nacimiento":
-            print("ENTIDAD NACIMIENTO")
+            y = data.lista_entidadNAC
+            x = data.lista_edad
+
+            y1 = np.array(y)
+            x1 = np.array(x)
+
+            mediaX = statistics.mean(data.lista_edad)
+            mediaY = statistics.mean(data.lista_entidadNAC)
+            sumaX = 0
+            for i in data.lista_edad:
+                sumaX += i
+                
+                sumaY = 0
+            for e in data.lista_edad:
+                sumaY += e
+
+            Columna1 = 0
+            for i in data.lista_edad:
+                n = i-mediaX
+                Columna1 += n
+
+            Columna2 = 0
+            for i in data.lista_edad:
+                n = i-mediaY
+                Columna2 += n
+
+            Columna3 = (sumaX - mediaX)*(sumaY - mediaY)
+            Columna4 = (sumaX - mediaX)**2
+            Columna5 = (sumaY - mediaY)**2
+            Columna6 = (Columna1**2)**0.5
+            Columna7 = (Columna2**2)**0.5
+            correlacion = np.corrcoef(x1, y1)[0, 1]
+
+            tableC = [["X-M(X)", Columna1], ["Y-M(Y)", Columna2], ["(X-M(X))(Y-M(Y))", Columna3], ["X-M(X)^2", Columna4], ["Y-M(Y)^2", Columna5], ["(sum(X-X)^2)^0.5", Columna6], ["(sum(Y-Y)^2)^0.5", Columna7], ["Coeficiente de Correlacion", correlacion]]
+            headersC = ["A. de Correlacion", "Datos"]
+            
+            finalC = (tabulate(tableC, headersC, colalign=(" ","center"), tablefmt="simple"))               
+
+            # Imprimir Analisis Descriptivo
+            self.output.setText(finalC)
+
+            self.output2.setText(" ")
+
+            print(Columna1)
 
         elif X == "Edad" and Y == "Entidad Residencia":
-            print("ENTIDAD RESIDENCIA")
+            
+            y = data.lista_entidadRES     
+            x = data.lista_edad
+
+            y1 = np.array(y)
+            x1 = np.array(x)
+
+            mediaX = statistics.mean(data.lista_edad)
+            mediaY = statistics.mean(data.lista_entidadRES)
+            sumaX = 0
+            for i in data.lista_edad:
+                sumaX += i
+                
+                sumaY = 0
+            for e in data.lista_edad:
+                sumaY += e
+
+            Columna1 = 0
+            for i in data.lista_edad:
+                n = i-mediaX
+                Columna1 += n
+
+            Columna2 = 0
+            for i in data.lista_edad:
+                n = i-mediaY
+                Columna2 += n
+
+            Columna3 = (sumaX - mediaX)*(sumaY - mediaY)
+            Columna4 = (sumaX - mediaX)**2
+            Columna5 = (sumaY - mediaY)**2
+            Columna6 = (Columna1**2)**0.5
+            Columna7 = (Columna2**2)**0.5
+            correlacion = np.corrcoef(x1, y1)[0, 1]
+
+            tableC = [["X-M(X)", Columna1], ["Y-M(Y)", Columna2], ["(X-M(X))(Y-M(Y))", Columna3], ["X-M(X)^2", Columna4], ["Y-M(Y)^2", Columna5], ["(sum(X-X)^2)^0.5", Columna6], ["(sum(Y-Y)^2)^0.5", Columna7], ["Coeficiente de Correlacion", correlacion]]
+            headersC = ["A. de Correlacion", "Datos"]
+            
+            finalC = (tabulate(tableC, headersC, colalign=(" ","center"), tablefmt="simple"))               
+
+            # Imprimir Analisis Descriptivo
+            self.output.setText(finalC)
+
+            self.output2.setText(" ")
+
+            print(Columna1)
 
                    
         print("FUNCIONA BOTON ANALISIS CORRELACION")
         
 
     def clickRegresion(self):
-        x = self.datoXCorrelacion.currentText()
-        y = self.datoYCorrelacion.currentText()
+        x = self.datoXRegresion.currentText()
+        y = self.datoYRegresion.currentText()
+        print(y)
         if x == "Edad" and y == "Entidad Federativa":
             y = data.lista_entidadUM     
             x = data.lista_edad
@@ -685,10 +773,90 @@ class Ui_Dialog(object):
             plt.show()
 
         elif x == "Edad" and y == "Entidad Nacimiento":
-            print("ENTIDAD NACIMIENTO")
+            print("nacimiento")
+            y = data.lista_entidadNAC    
+            x = data.lista_edad
+            n = len(x)
+            x = np.array(x)
+            y = np.array(y)
+            sumx = sum(x)
+            sumy = sum(y)
+            sumx2 = sum(x*x)
+            sumy2 = sum(y*y)
+            sumxy = sum(x*y)
+            promx = sumx/n
+            promy = sumy/n
+
+            m = (sumx*sumy - n*sumxy)/(sumx**2 - n*sumx2)
+            b = promy - m*promx
+            table = [["Suma Edad", sumx], ["Suma Entidad", sumy], ["Edad^2", sumx2], ["Entidad^2", sumy2], ["Suma Edad y Entidad", sumxy], ["Prom. Edad", promx], ["Prom. Entidad", promy], ["Coeficiente a", m], ["Coeficiente b", b], ["R2", m]]
+            headers = ["Datos Regresion", "Datos"]
+            
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
+
+        #REDIMENSIONAR LAS VARIABLES PARA QUE TENGAN UN SAMPLEO DE 1000
+
+            sr = np.random.choice(np.arange(len(x)), 1000, replace=False)
+
+            sample_x = x[sr]
+            sample_y = y[sr]
+            # Imprimir Regresión
+            self.output.setText(" ")
+
+            self.output2.setText(final)
+
+            plt.plot(sample_x, sample_y, 'o', label='Datos')
+            plt.plot(x, m*x + b, label='Ajuste')
+            plt.xlabel('edad')
+            plt.ylabel('Entidad De Nacimiento')
+            plt.title('Regresion')
+            plt.grid()
+            plt.legend()
+            plt.show()
+
 
         elif x == "Edad" and y == "Entidad Residencia":
-            print("ENTIDAD RESIDENCIA")
+            print("residencia")
+            y = data.lista_entidadRES     
+            x = data.lista_edad
+            n = len(x)
+            x = np.array(x)
+            y = np.array(y)
+            sumx = sum(x)
+            sumy = sum(y)
+            sumx2 = sum(x*x)
+            sumy2 = sum(y*y)
+            sumxy = sum(x*y)
+            promx = sumx/n
+            promy = sumy/n
+
+            m = (sumx*sumy - n*sumxy)/(sumx**2 - n*sumx2)
+            b = promy - m*promx
+            table = [["Suma Edad", sumx], ["Suma Entidad", sumy], ["Edad^2", sumx2], ["Entidad^2", sumy2], ["Suma Edad y Entidad", sumxy], ["Prom. Edad", promx], ["Prom. Entidad", promy], ["Coeficiente a", m], ["Coeficiente b", b], ["R2", m]]
+            headers = ["Datos Regresion", "Datos"]
+            
+            final = (tabulate(table, headers, colalign=(" ","center"), tablefmt="pretty"))               
+
+        #REDIMENSIONAR LAS VARIABLES PARA QUE TENGAN UN SAMPLEO DE 1000
+
+            sr = np.random.choice(np.arange(len(x)), 1000, replace=False)
+
+            sample_x = x[sr]
+            sample_y = y[sr]
+            # Imprimir Regresión
+            self.output.setText(" ")
+
+            self.output2.setText(final)
+
+            plt.plot(sample_x, sample_y, 'o', label='Datos')
+            plt.plot(x, m*x + b, label='Ajuste')
+            plt.xlabel('edad')
+            plt.ylabel('Entidad de Residencia')
+            plt.title('Regresion')
+            plt.grid()
+            plt.legend()
+            plt.show()
+
 
         print("FUNCIONA BOTON REGRESION")
         
@@ -711,12 +879,48 @@ class Ui_Dialog(object):
 
         
             plt.scatter(x_sample,y_sample)
-            plt.ylabel("Entidades Federativa")
+            plt.ylabel("Entidades Donde Fue Tratado")
+            plt.xlabel("Edad de los Casos")
+       
+        
+            plt.show()
+        elif variableX == "Edad" and variableY == "Entidad Nacimiento":
+            y = data.lista_entidadNAC     
+            x = data.lista_edad
+            dx = np.random.choice(np.arange(len(x)), 1000, replace=False)
+
+            y1= np.array(y)
+            x1= np.array(x)
+        
+            y_sample = y1[dx]
+            x_sample = x1[dx]
+
+        
+            plt.scatter(x_sample,y_sample)
+            plt.ylabel("Entidades de Nacimiento")
             plt.xlabel("Edad de los Casos")
        
         
             plt.show()
 
+        elif variableX == "Edad" and variableY == "Entidad Residencia":
+            y = data.lista_entidadRES     
+            x = data.lista_edad
+            dx = np.random.choice(np.arange(len(x)), 1000, replace=False)
+
+            y1= np.array(y)
+            x1= np.array(x)
+        
+            y_sample = y1[dx]
+            x_sample = x1[dx]
+
+        
+            plt.scatter(x_sample,y_sample)
+            plt.ylabel("Entidades de Residencia")
+            plt.xlabel("Edad de los Casos")
+       
+        
+            plt.show()
 
 if __name__ == "__main__":
     import sys
